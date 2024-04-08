@@ -8,7 +8,9 @@ import Footer from "../components/Footer";
 import CardComponents from "../components/CardComponent";
 import Search from "../../../public/search.svg";
 export default function Planets() {
-  const [planets, setPlanets] = useState([]);
+  const [planets, setPlanets] = useState<any[]>([]);
+  const [api, setApi] = useState("");
+
   const [searchTerm, setSearchTerm] = useState("");
   const fetchData = async (
     searchTerm: any,
@@ -24,7 +26,8 @@ export default function Planets() {
           search: searchTerm,
         },
       });
-      setPlanets(response.data);
+      setPlanets(response.data.results);
+      setApi(response.data);
     } catch (error) {
       console.error("Error fetching planets:", error);
     }
@@ -48,7 +51,7 @@ export default function Planets() {
           />
         </div>
         <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
-          {planets?.results?.map((planet) => (
+          {planets?.map((planet: any) => (
             <CardComponents
               key={planet?.id}
               title={planet?.name?.toString()}
@@ -63,7 +66,7 @@ export default function Planets() {
           ))}
         </div>
       </div>
-      <Pagination fetchData={fetchData} api={planets} name={"planets"} />
+      <Pagination fetchData={fetchData} api={api} name={"planets"} />
       <Footer />
     </main>
   );

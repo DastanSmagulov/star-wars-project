@@ -6,9 +6,11 @@ import Pagination from "../components/Pagination";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CardComponents from "../components/CardComponent";
+
 export default function People() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [people, setPeople] = useState([]);
+  const [people, setPeople] = useState<any[]>([]);
+  const [api, setApi] = useState("");
   const fetchData = async (
     searchTerm: any,
     link = `${process.env.NEXT_PUBLIC_API_LIVE_URL}/people`
@@ -22,7 +24,8 @@ export default function People() {
           search: searchTerm,
         },
       });
-      setPeople(response.data);
+      setPeople(response.data.results);
+      setApi(response.data);
     } catch (error) {
       console.error("Error fetching planets:", error);
     }
@@ -30,8 +33,6 @@ export default function People() {
   useEffect(() => {
     fetchData(searchTerm);
   }, [searchTerm]);
-  console.log(searchTerm);
-  console.log(people);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between people-box">
       <Header />
@@ -47,7 +48,7 @@ export default function People() {
           />
         </div>
         <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
-          {people?.results?.map((person: any) => (
+          {people?.map((person: any) => (
             <CardComponents
               key={person?.id}
               title={person?.name?.toString()}
@@ -62,7 +63,7 @@ export default function People() {
           ))}
         </div>
       </div>
-      <Pagination fetchData={fetchData} api={people} name={"people"} />
+      <Pagination fetchData={fetchData} api={api} name={"people"} />
       <Footer />
     </main>
   );

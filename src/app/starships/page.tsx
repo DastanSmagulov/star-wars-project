@@ -8,7 +8,8 @@ import Footer from "../components/Footer";
 import CardComponents from "../components/CardComponent";
 export default function People() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [starship, setStarship] = useState([]);
+  const [api, setApi] = useState("");
+  const [starship, setStarship] = useState<any[]>([]);
   const fetchData = async (
     searchTerm: any,
     link = `${process.env.NEXT_PUBLIC_API_LIVE_URL}/starships`
@@ -22,7 +23,8 @@ export default function People() {
           search: searchTerm,
         },
       });
-      setStarship(response.data);
+      setStarship(response.data.results);
+      setApi(response.data);
     } catch (error) {
       console.error("Error fetching planets:", error);
     }
@@ -46,7 +48,7 @@ export default function People() {
           />
         </div>
         <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
-          {starship?.results?.map((ship: any) => (
+          {starship?.map((ship: any) => (
             <CardComponents
               key={ship?.id}
               title={ship?.name?.toString()}
@@ -61,7 +63,7 @@ export default function People() {
           ))}
         </div>
       </div>
-      <Pagination fetchData={fetchData} api={starship} name={"starships"} />
+      <Pagination fetchData={fetchData} api={api} name={"starships"} />
       <Footer />
     </main>
   );
