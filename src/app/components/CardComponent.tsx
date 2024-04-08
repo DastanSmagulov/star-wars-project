@@ -1,4 +1,13 @@
-const CardComponents = ({
+interface CardProps {
+  title: string;
+  characteristics: string;
+  secondCharacteristics: string;
+  characteristicsContent: string;
+  secondCharacteristicsContent: string;
+  thirdCharacteristics?: string;
+  thirdCharacteristicsContent?: string;
+}
+const CardComponents: React.FC<CardProps> = ({
   title,
   characteristics,
   secondCharacteristics,

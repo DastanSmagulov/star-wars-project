@@ -11,7 +11,7 @@ export default function People() {
   const [people, setPeople] = useState([]);
   const fetchData = async (
     searchTerm: any,
-    link = "https://swapi.dev/api/people"
+    link = `${process.env.NEXT_PUBLIC_API_LIVE_URL}/people`
   ) => {
     // Function to fetch data for given page
     try {

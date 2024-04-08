@@ -11,7 +11,7 @@ export default function People() {
   const [starship, setStarship] = useState([]);
   const fetchData = async (
     searchTerm: any,
-    link = "https://swapi.dev/api/starships"
+    link = `${process.env.NEXT_PUBLIC_API_LIVE_URL}/starships`
   ) => {
     // Function to fetch data for given page
     try {

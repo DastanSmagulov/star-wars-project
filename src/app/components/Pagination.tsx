@@ -1,6 +1,12 @@
 import React from "react";
 
-const Pagination = ({ fetchData, api, name }) => {
+interface PaginationProps {
+  fetchData: any;
+  api: any;
+  name: String;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ fetchData, api, name }) => {
   const { next, previous } = api;
 
   const handleNext = () => {
@@ -15,7 +21,7 @@ const Pagination = ({ fetchData, api, name }) => {
     }
   };
 
-  const handlePageClick = (url) => {
+  const handlePageClick = (url: any) => {
     fetchData("", url);
   };
 
