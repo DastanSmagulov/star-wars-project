@@ -2,35 +2,34 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First install all neccessary dependancies using npm i
+
+Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design and Development Process:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Requirements Gathering: The process began with gathering requirements, understanding the project goals, and defining user stories or use cases.
 
-## Learn More
+UI Design: Tailwind CSS and Daisy UI were used for styling the application, providing a modern and responsive design.
 
-To learn more about Next.js, take a look at the following resources:
+Development: Next.js, a popular React framework, was chosen for building the frontend of the application due to its server-side rendering capabilities and ease of use. Axios was used for making HTTP requests to fetch data from the backend API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployment: The application was deployed to a hosting platform such as Vercel for public access. Link to visit website is https://star-wars-project-eight.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Unique Approaches or Methodologies:
 
-## Deploy on Vercel
+Tailwind CSS and Daisy UI: The use of Tailwind CSS and Daisy UI allowed for rapid development of a modern and responsive UI without the need for writing custom CSS. This approach promotes consistency and scalability in the design.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js for Server-Side Rendering: Next.js provides server-side rendering out of the box, improving the performance and SEO of the application by delivering pre-rendered HTML pages to the client.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Compromises Made:
+
+Simplicity vs. Complexity: A balance was struck between adding features and keeping the application simple and easy to use. Some features may have been deferred or simplified to prioritize the core functionality and user experience.
